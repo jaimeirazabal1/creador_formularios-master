@@ -1,0 +1,58 @@
+<?php View::content() ?>
+<?php echo Tag::js('formularios/index') ?>
+<h2>Creación de nuevo modelo</h2>
+<fieldset class="well" id="form_creacion_db">
+	<legend>Base de datos</legend>
+	<p>
+		Creación de columnas de base de datos <button class="btn btn-primary btn-mini" id='add_row'>Agregar Fila</button>
+		<?php if (!empty($tablas)): ?>
+			<?php //Util::pre($tablas) /*public static function select($field, $data, $attrs = NULL, $value = NULL)*/?>
+			<?php echo Form::select("tablas.tablas",$tablas,"class='form-control tablas' style='width:200px'") ?>
+		<?php endif ?>
+	</p>
+	
+	<?php echo Form::open('POST',"","id='form_nuevo_modelo'") ?>
+	<?php echo Form::text('Nombre_modelo',"class='form-control' placeholder='Nombre de Tabla' required") ?>
+		<table class="table table-bordered" id="table_new_db_columns">
+			<thead>
+				<th>Nombre</th>
+				<th>Tipo de Dato</th>
+				<th>Constrain</th>
+				<th>Tamaño / Formato</th>
+				<th>Null</th>
+				<th>Comentario</th>
+				<th>*</th>
+			</thead>
+			<tr title="Campo Obligatorio">
+				<td>Id</td>
+				<td>Número</td>
+				<td>Llave Primaria</td>
+				<td>11</td>
+				<td>No</td>
+				<td>Llave Primaria</td>
+				<td style="background:#6B6B6B"></td>
+			</tr>
+		</table>
+		<?php echo Form::submit('Procesar','class="btn btn-success btn-mini"') ?>
+	<?php echo Form::close() ?>
+</fieldset>
+
+<div class="modal fade ">
+  <div class="modal-dialog modal-lg" style="width:95%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <table class='table table-bordered' id="tabla">
+
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="crear_vistas">Crear Vistas</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

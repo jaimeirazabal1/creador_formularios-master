@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+  <title>App Framework</title>
+  <?php //Tag::css('bienvenida') ?>
+  <?php //Tag::css('style') ?>
+  <?php Tag::css("bootstrap/bootstrap.min") ?>
+  <?php echo Html::includeCss() ?>
+  <?php echo Tag::js("jquery-1.11.0.min") ?>
+  <?php echo Tag::js("bootstrap/bootstrap.min") ?>
+  <?php echo Tag::js("underscore-min") ?>
+  <?php echo Tag::js("backbone-min") ?>
+</head>
+<body>
+    <div id='content' class=' container'>
+        <div id='head' class='page-header'>
+            <h1 id='logo'>KumbiaPHP</h1>
+            <h2 id='info-app'><small>web &amp; app Framework versión <?php echo kumbia_version() ?></small></h2>
+        </div>
+        
+        <?php View::content(); ?>
+        <hr>
+        <?php View::partial('kumbia/footer') ?>
+    </div>
+</body>
+</html>
